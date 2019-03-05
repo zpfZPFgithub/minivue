@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- <script src="./vue-min.js"></script> -->
     <script src="./vue.js"></script>
 </head>
 <body>
-    
+    <div id="app">
+        <input type="text" v-model="d" />
+        <span>{{d}}</span>
+    </div>
+    <script>
+        let vue = new Vue({
+            el: "#app",
+            data: {
+                d: "hello world"
+            }
+        })
+        // vue.opts.data = { d: "你好" };
+        vue.opts.data.d = "你好";
+    </script>
 </body>
 </html>
