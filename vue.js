@@ -33,7 +33,7 @@ function defineReactive$$1(obj){
                     // 设置的时候拦截
                 },
                 get: function(){
-                    return obj;
+                    return obj[key];
                 }
             });
         }
@@ -54,9 +54,25 @@ function query(el){
 function compileHtml(el){
     let $el = query(el);
     if($el.nodeType == 1){
-        let children = $el.children;
+        let attrs = [...$el.attributes];
+        attrs.forEach((attr)=>{
+            let {name, value} = attr;
+            if(name.indexOf('v-')===0){
+                console.log(name, value)
+            }
+            
+        });
+        let children = $el.childNodes;
         for(let l of children){
-            console.log(l)
+            compileHtml(l);
+        }
+    }else{
+        let text = $el.textContent;
+        let reg = /\{\{(.+?)\}\}/g;
+        if(reg.test(text)){
+            text.replace(reg, (...args)=>{
+                let r = args[1]; //{{a}} 得到a
+            })
         }
     }
 }
