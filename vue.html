@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- <script src="./vue-min.js"></script> -->
+    <!-- <script src="./MVVM.js"></script> -->
     <script src="./vue.js"></script>
     <base target="__blank" href="http://www.baidu.com/">
 </head>
@@ -20,11 +21,11 @@
         let vue = new Vue({
             el: "#app",
             data: {
-                d: "hello world"
+                d: "hello world 1"
             }
         })
-        // vue.opts.data = { d: "你好" };
-        vue.opts.data.d = "你好";
+        vue.$data.d = "你好";
+        //console.log(vue.$data);
     </script>
 </body>
 </html>
